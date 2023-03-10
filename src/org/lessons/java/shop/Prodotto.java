@@ -3,12 +3,11 @@ package org.lessons.java.shop;
 import java.util.Random;
 
 public class Prodotto {
-
+    public final static int VAT = 22;
     private int code;
     private String name;
     private String description;
     private double price;
-    private double vat;
 
     public Prodotto() {
         Random code = new Random();
@@ -44,19 +43,11 @@ public class Prodotto {
         this.price = price;
     }
 
-    public double getVat() {
-        return vat;
+    public double getVatPrice() {
+        return (getPrice() + ((getPrice() / 100) * VAT));
     }
 
-    public void setVat(double vat) {
-        this.vat = vat;
-    }
-
-    public void showBasePrice() {
-        System.out.println("Il prezzo del prodotto " + getCode() + " è di " + getPrice() + "€");
-    }
-
-    public void showVatPrice() {
-        System.out.println("Il prezzo con IVA del prodotto " + getCode() + " è di " + (getPrice() + ((getPrice() / 100) * getVat()) + "€"));
+    public String getExtendedName() {
+        return (getCode() + "-" + getName());
     }
 }
