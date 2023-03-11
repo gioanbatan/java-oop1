@@ -1,5 +1,6 @@
 package org.lessons.java.shop;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Prodotto {
@@ -48,6 +49,10 @@ public class Prodotto {
     }
 
     public String getExtendedName() {
-        return (getCode() + "-" + getName());
+        return (getFormattedCode() + "-" + getName());
+    }
+
+    public String getFormattedCode() {
+        return new DecimalFormat("00000000").format(getCode());
     }
 }
